@@ -1,26 +1,32 @@
 package Game;
 
 public class Game {
-	private int rolls[] = new int[20];
+	private int rolls[] = new int[21];
 	private int currentRoll = 0;
 	private int score = 0;
 	
 	void roll(int nbQuilles) {
-		rolls[currentRoll] = nbQuilles;
-		currentRoll++;
+		rolls[currentRoll] = nbQuilles;		
+		if (currentRoll % 2 == 0 && nbQuilles == 10) {
+			rolls[++currentRoll] = 0;
+		}
+		currentRoll += 1;
 	}
 	
 	int score() {
-		for (int i = 0; i < rolls.length; i++) {
-			if(i % 2 == 1) { // les rolls de numéro pair
-				if((rolls[i] + rolls[i - 1]) == 10) {
-					score += rolls[i + 1];
-				}
-				score += rolls[i];
+		int rollIndex = 0;
+		for (int i = 0; i < 10; i++) {
+			if(rolls[rollIndex] == 10) {
+				score += 10 + rolls[rollIndex + 2] + rolls[rollIndex + 3];
+			}
+			
+			else if(rolls[rollIndex] + rolls[rollIndex + 1] == 10) {
+				score += 10 + rolls[rollIndex + 2];
 			}
 			else {
-				score += rolls[i];
+				score += rolls[rollIndex] + rolls[rollIndex + 1];
 			}
+			rollIndex += 2;
 		}
 		return score;
 	}
