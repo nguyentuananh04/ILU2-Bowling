@@ -12,7 +12,15 @@ public class Game {
 	
 	int score() {
 		for (int i = 0; i < rolls.length; i++) {
-			score += rolls[i];
+			if(i % 2 == 1) { // les rolls de numéro pair
+				if((rolls[i] + rolls[i - 1]) == 10) {
+					score += rolls[i + 1];
+				}
+				score += rolls[i];
+			}
+			else {
+				score += rolls[i];
+			}
 		}
 		return score;
 	}
