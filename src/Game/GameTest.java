@@ -100,7 +100,44 @@ class GameTest {
 		game.roll(2);
 		game.roll(7);
 		int score = game.score();
-		System.out.println("Entrée : On roll 10, 3 puis 4 et 16 fois 0\nScore attendu: 122\n" + "Score obtenu : " + score + "\n");
+		System.out.println("Entrée : 1, 2, 10, 0, 10, 4, 2, 0, 10, 6, 2, 0, 10, 6, 4, 8, 2, 2, 7\nScore attendu: 122\n" + "Score obtenu : " + score + "\n");
 		assertEquals(score, 122);
+	}
+	
+	@Test
+	void testLevel5() {
+		game.roll(1);
+		game.roll(2);
+		game.roll(10);
+		game.roll(0);
+		game.roll(10);
+		game.roll(4);
+		game.roll(2);
+		game.roll(0);
+		game.roll(10);
+		game.roll(6);
+		game.roll(2);
+		game.roll(0);
+		game.roll(10);
+		game.roll(6);
+		game.roll(4);
+		game.roll(8);
+		game.roll(2);
+		game.roll(2);
+		game.roll(8);
+		game.roll(8);
+		int score = game.score();
+		System.out.println("Entrée : 1, 2, 10, 0, 10, 4, 2, 0, 10, 6, 2, 0, 10, 6, 4, 8, 2, 2, 8\nScore attendu: 131\n" + "Score obtenu : " + score + "\n");
+		assertEquals(score, 131);
+	}
+	
+	@Test
+	void testLevel6() {
+		for (int i = 0; i < 12; i++) {
+			game.roll(10);
+		}
+		int score = game.score();
+		System.out.println("Entrée : On roll 12 fois 10\nScore attendu: 300\n" + "Score obtenu : " + score + "\n");
+		assertEquals(score, 300);
 	}
 }
