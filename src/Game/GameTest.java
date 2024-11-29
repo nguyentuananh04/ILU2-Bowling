@@ -77,4 +77,30 @@ class GameTest {
 		System.out.println("Entrée : On roll 10, 3 puis 4 et 16 fois 0\nScore attendu: 24\n" + "Score obtenu : " + score + "\n");
 		assertEquals(score, 24);
 	}
+	
+	@Test
+	void testLevel4() {
+		game.roll(1);
+		game.roll(2);
+		game.roll(10);
+		game.roll(0);
+		game.roll(10);
+		game.roll(4);
+		game.roll(2);
+		game.roll(0);
+		game.roll(10);
+		game.roll(6);
+		game.roll(2);
+		game.roll(0);
+		game.roll(10);
+		game.roll(6);
+		game.roll(4);
+		game.roll(8);
+		game.roll(2);
+		game.roll(2);
+		game.roll(7);
+		int score = game.score();
+		System.out.println("Entrée : On roll 10, 3 puis 4 et 16 fois 0\nScore attendu: 122\n" + "Score obtenu : " + score + "\n");
+		assertEquals(score, 122);
+	}
 }
